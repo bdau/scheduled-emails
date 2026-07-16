@@ -1,0 +1,17 @@
+# Daily Market Update - delivery + shell config
+name: daily-market-update
+title: Ben's Daily Market Update    # used for {{EMAIL_TITLE}} (page title + masthead)
+brand: AI Got Something to Say      # {{BRAND}} 
+subject: Daily Market Update
+
+# Delivery (read by the email-send skill)
+from: claude@updates.dunn.fm
+to: ben@dunn.fm
+# audience_id:                      # set this instead of `to` to send to a Resend audience
+
+# Cadence (mirror of the scheduled task; source of truth is the scheduled task itself)
+schedule: "0 5 * * *"               # 05:00 daily
+
+# Content parameters
+lookback_hours: 36
+footer_text: Tiles show current level with 1D / YTD / 1Y return and a 12-month chart. Green denotes positive, red negative, amber neutral. Not investment advice.
