@@ -1,0 +1,8 @@
+# Daily Market Update - delivery + shell config
+name: claude-global-instructions-review
+title: Claude Global Instructions Review    # used for {{EMAIL_TITLE}} (page title + masthead)
+brand: AI Got Something to Say              # {{BRAND}} 
+subject: Claude Global Instructions Review
+
+# Content parameters
+footer_text: 
