@@ -52,7 +52,7 @@ reddit.com/r/PromptDesign
 - Flag conflicting information between sources rather than silently picking one.
 - Do not fabricate figures, quotes, or attributions.
 - If a section has no material developments in the lookback window, say so explicitly rather than padding with old news.
-- Research with the WebSearch and web_fetch tools, restricted to the listed sources and the last 36 hours.
+- Research with the WebSearch and web_fetch tools only, restricted to the listed sources and the last 36 hours. Do not use Claude in Chrome, Playwright, or any other browser-automation tool — no browser tabs should be opened.
 - Tone: neutral, analytical, no hype language.
 
 ## Sections (in order)
