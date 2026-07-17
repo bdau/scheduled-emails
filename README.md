@@ -1,6 +1,6 @@
 # scheduled-emails
 
-Source of truth for Ben's scheduled research emails. Each email runs as a Claude cloud scheduled task that fetches these files at run time and sends via Resend. Nothing is copied into the tasks, so this repo is the one place to edit.
+Source of truth for scheduled research emails. Each email runs as a Claude cloud scheduled task that fetches these files at run time and sends via Resend. Nothing is copied into the tasks, so this repo is the one place to edit.
 
 ## How it runs
 
@@ -19,7 +19,8 @@ scheduled-emails/
       brief.md         research spec, email-specific components, body layout
       config.yaml      title, brand, subject, from, to/audience, schedule, footer
     _template/         copy this to start a new email
-  TASK-PROMPT-TEMPLATE.md
+  TASK-PROMPTS/
+    TASK-PROMPT-xxx.md the prompt to be pasted into the scheduled task in Claude
   README.md
 ```
 
@@ -39,7 +40,7 @@ Change the house look (affects every email): edit `shared/format.md`, commit, pu
 
 Change one email: edit files under `emails/<name>/`, commit, publish. Only that email changes.
 
-Add an email: copy `emails/_template/` to `emails/<name>/`, fill `brief.md` and `config.yaml`, commit, publish. Then create one cloud scheduled task from `TASK-PROMPT-TEMPLATE.md` with the new name and no folder attached. Click Run now once to test and pre-approve tools.
+Add an email: copy `emails/_template/` to `emails/<name>/`, fill `brief.md` and `config.yaml`, commit, publish. Then create one cloud scheduled task from `TASK-PROMPT-xxx.md` with the new name and no folder attached. Click Run now once to test and pre-approve tools.
 
 Change a schedule or pause a task: edit the task's cron time or enabled state in the Cowork scheduled-tasks view (or ask Claude to update it). The `schedule` field in `config.yaml` is a human-readable mirror; the task is the source of truth.
 
