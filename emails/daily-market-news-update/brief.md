@@ -40,7 +40,7 @@ The main offsetting factor is the US-Iran conflict escalation with the US striki
 near $80.
 
 ### Section - Market Tiles
-The market-performance grid is should display tiles for each ticker listed below in the order provided using the market-tile skill. Build one tile_img per instrument and lay them out in {{MARKET_TILES}} using the tile_grid component, MAXIMUM three tiles per row.
+The market-performance grid is should display tiles for each ticker listed below in the order provided using the market-tile skill. The tickers are listed below in sections. For each section, include a title and then show the market tiles for that section. Build one tile_img per instrument and lay them out in {{MARKET_TILES}} using the tile_grid component, MAXIMUM three tiles per row.
 
 Equities:
   GSPC.INDX S&P500
@@ -56,6 +56,7 @@ Volatiity:
   SKEW.INDX SKEW
 
 FX
+  DXY.INDX DXY
   EURUSD.FOREX EUR
   USDJPY.FOREX JPY
   GBPUSD.FOREX GBP
@@ -63,6 +64,15 @@ FX
 
 Crypto:
   BTC-USD.CC Bitcoin
+  ETH-USD.CC Ethereum
+
+Commodities:
+  CL.COMM WTI Crude
+  BZ.COMM Brent Crude
+  GC.COMM Gold
+  SI.COMM Silver
+  HG.COMM Copper
+
 
 ### Section - Positive News
 Select the key topics with positive market sentiment and summarise each. For each topic, produce ONE card using the positive_item component: a 30-60 word body in {{BODY}}, a short headline in {{HEADLINE}}, and site-name source links in {{ITEM_SOURCES}} (email-format source_link). Identify EVERY instrument the topic mentions (each company/stock, asset class, commodity, currency, cryptocurrency) and resolve each to an EODHD SYMBOL.EXCHANGE ticker with the market-tile skill (use the relevant index tile for a sector or broad asset class). Build one tile_img per instrument and lay them out in {{ITEM_TILES}} using the tile_grid component, MAXIMUM three tiles per row. If the topic mentions no tradable instrument, leave {{ITEM_TILES}} empty. Concatenate all cards into {{POSITIVE_ITEMS}}.
