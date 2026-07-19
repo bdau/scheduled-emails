@@ -39,11 +39,30 @@ US equities rose on 14 July (S&P 500 +0.4%, Nasdaq Composite +0.9%), helped alon
 The main offsetting factor is the US-Iran conflict escalation with the US striking  about 90 targets overnight, a reinstated shipping "blockade" on the Strait of Hormuz and Hormuz traffic down about 52% week on week. This kept Brent near $85 and WTI 
 near $80.
 
-IBM fell more than 25% on weak guidance.
-
 ### Section - Market Tiles
-The market-performance grid is ALREADY BUILT INTO the body layout below: all 13 tiles are embedded, in a fixed order, as live &lt;img&gt; tags pointing at the tile endpoint. Do NOT call the market-tile skill for these and do NOT change the grid. Each &lt;img&gt; renders current data when the email is opened. Tickers/labels for reference:
-GSPC.INDX S&P500 | NDX.INDX Nasdaq 100 | BUK100P.INDX FTSE 100 | STOXX50E.INDX Euro Stoxx 50 | AXJO.INDX S&P/ASX200 | N225.INDX Nikkei 225 | 000001.SHG SSE Composite | VIX.INDX VIX | EURUSD.FOREX EUR | USDJPY.FOREX JPY | GBPUSD.FOREX GBP | AUDUSD.FOREX AUD | BTC-USD.CC Bitcoin
+The market-performance grid is should display tiles for each ticker listed below in the order provided using the market-tile skill. Build one tile_img per instrument and lay them out in {{MARKET_TILES}} using the tile_grid component, MAXIMUM three tiles per row.
+
+Equities:
+  GSPC.INDX S&P500
+  NDX.INDX Nasdaq 100
+  BUK100P.INDX FTSE 100
+  STOXX50E.INDX Euro Stoxx 50
+  AXJO.INDX S&P/ASX200
+  N225.INDX Nikkei 225
+  000001.SHG SSE Composite
+
+Volatiity:
+  VIX.INDX VIX
+  SKEW.INDX SKEW
+
+FX
+  EURUSD.FOREX EUR
+  USDJPY.FOREX JPY
+  GBPUSD.FOREX GBP
+  AUDUSD.FOREX AUD
+
+Crypto:
+  BTC-USD.CC Bitcoin
 
 ### Section - Positive News
 Select the key topics with positive market sentiment and summarise each. For each topic, produce ONE card using the positive_item component: a 30-60 word body in {{BODY}}, a short headline in {{HEADLINE}}, and site-name source links in {{ITEM_SOURCES}} (email-format source_link). Identify EVERY instrument the topic mentions (each company/stock, asset class, commodity, currency, cryptocurrency) and resolve each to an EODHD SYMBOL.EXCHANGE ticker with the market-tile skill (use the relevant index tile for a sector or broad asset class). Build one tile_img per instrument and lay them out in {{ITEM_TILES}} using the tile_grid component, MAXIMUM three tiles per row. If the topic mentions no tradable instrument, leave {{ITEM_TILES}} empty. Concatenate all cards into {{POSITIVE_ITEMS}}.
@@ -126,12 +145,7 @@ Assemble this block and pass it as {{BODY_CONTENT}} to the email-format shell. P
   <!-- MARKET PERFORMANCE (grid is fixed; do not edit) -->
   <tr><td style="padding:24px 28px 4px 28px;">
     <div style="font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;font-size:20px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#d5dce6;padding:0 0 10px 0;border-bottom:2px solid #1e2733;margin:0 0 18px 0;">Market Performance</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;">
-        <tr><td align="center" valign="top" style="padding:5px;"><img src="https://market-tile-api.weathered-boat-4f6b.workers.dev/tile?ticker=GSPC.INDX&label=S%26P500&size=390" width="168" alt="S&amp;P500" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;"></td><td align="center" valign="top" style="padding:5px;"><img src="https://market-tile-api.weathered-boat-4f6b.workers.dev/tile?ticker=NDX.INDX&label=Nasdaq%20100&size=390" width="168" alt="Nasdaq 100" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;"></td><td align="center" valign="top" style="padding:5px;"><img src="https://market-tile-api.weathered-boat-4f6b.workers.dev/tile?ticker=BUK100P.INDX&label=FTSE%20100&size=390" width="168" alt="FTSE 100" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;"></td></tr>
-        <tr><td align="center" valign="top" style="padding:5px;"><img src="https://market-tile-api.weathered-boat-4f6b.workers.dev/tile?ticker=STOXX50E.INDX&label=Euro%20Stoxx%2050&size=390" width="168" alt="Euro Stoxx 50" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;"></td><td align="center" valign="top" style="padding:5px;"><img src="https://market-tile-api.weathered-boat-4f6b.workers.dev/tile?ticker=AXJO.INDX&label=S%26P/ASX200&size=390" width="168" alt="S&amp;P/ASX200" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;"></td><td align="center" valign="top" style="padding:5px;"><img src="https://market-tile-api.weathered-boat-4f6b.workers.dev/tile?ticker=N225.INDX&label=Nikkei%20225&size=390" width="168" alt="Nikkei 225" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;"></td><td align="center" valign="top" style="padding:5px;"><img src="https://market-tile-api.weathered-boat-4f6b.workers.dev/tile?ticker=000001.SHG&label=SSE%20Composite&size=390" width="168" alt="SSE Composite" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;"></td></tr>
-        <tr><td align="center" valign="top" style="padding:5px;"><img src="https://market-tile-api.weathered-boat-4f6b.workers.dev/tile?ticker=VIX.INDX&label=VIX&size=390" width="168" alt="VIX" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;"></td><td align="center" valign="top" style="padding:5px;"><img src="https://market-tile-api.weathered-boat-4f6b.workers.dev/tile?ticker=EURUSD.FOREX&label=EUR&size=390" width="168" alt="EUR" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;"></td><td align="center" valign="top" style="padding:5px;"><img src="https://market-tile-api.weathered-boat-4f6b.workers.dev/tile?ticker=USDJPY.FOREX&label=JPY&size=390" width="168" alt="JPY" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;"></td></tr>
-        <tr><td align="center" valign="top" style="padding:5px;"><img src="https://market-tile-api.weathered-boat-4f6b.workers.dev/tile?ticker=GBPUSD.FOREX&label=GBP&size=390" width="168" alt="GBP" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;"></td><td align="center" valign="top" style="padding:5px;"><img src="https://market-tile-api.weathered-boat-4f6b.workers.dev/tile?ticker=AUDUSD.FOREX&label=AUD&size=390" width="168" alt="AUD" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;"></td><td align="center" valign="top" style="padding:5px;"><img src="https://market-tile-api.weathered-boat-4f6b.workers.dev/tile?ticker=BTC-USD.CC&label=Bitcoin&size=390" width="168" alt="Bitcoin" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;"></td></tr>
-      </table>
+    {{MARKET_TILES}}
   </td></tr>
 
   <!-- POSITIVE -->
