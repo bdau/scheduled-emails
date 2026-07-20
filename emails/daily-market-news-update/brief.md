@@ -40,7 +40,7 @@ The main offsetting factor is the US-Iran conflict escalation with the US striki
 near $80.
 
 ### Section - Market Tiles
-The market-performance grid is should display tiles for each ticker listed below in the order provided using the market-tile skill. The tickers are listed below in sections. For each section, include a title and then show the market tiles for that section. Build one tile_img per instrument and lay them out in {{MARKET_TILES}} using the tile_grid component, MAXIMUM three tiles per row. The number in brackets is the number of decimal places to be shown.
+The market-performance grid is should display tiles for each ticker listed below in the order provided using the market-tile skill. The tickers are listed below in sections. For each section, include a title and then show the market tiles for that section. Build one tile_img per instrument and lay them out in {{MARKET_TILES}} using the tile_grid component, MAXIMUM three tiles per row. If a number is listed in brackets after the ticker and label, this is the number of decimal level to be shown, and this should be used by the market-tile skill to pass to the market-tile API.
 
 Equities:
   GSPC.INDX S&P500 (0)
