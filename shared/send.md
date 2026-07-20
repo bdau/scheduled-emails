@@ -13,7 +13,7 @@ Exactly one of `to` / `audience_id` should be set. If both are present, prefer `
 
 <procedure>
 1. Confirm the HTML is complete: every {{...}} placeholder from the shell and the email's components has been substituted. If any `{{` remains in the body, stop and fix it before sending - never send a template with unfilled placeholders.
-2. Send using the resend MCP server or if not available, use the resend.com API:
+2. Send using the resend MCP server or if not available, use the resend.com API using curl with a direct POST https://api.resend.com/emails using the RESEND_API_KEY from the environment:
    - Inline recipients (`to`): call `mcp__resend__send-email` with `from`, `to`, `subject`, and `html` = the assembled document.
    - Audience (`audience_id`): the distribution list is managed in Resend, not in these files. Resolve the audience's contacts and send. For a single shared list this is a batch send via `mcp__resend__send-batch-emails`; for a true newsletter-style blast, a Resend broadcast to the audience is the cleaner path. Pick based on the email's config and note which you used.
 3. Do not modify the HTML during sending. Formatting decisions belong to `shared/format.md` and the email's brief, not here.

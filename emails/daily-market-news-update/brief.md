@@ -40,39 +40,49 @@ The main offsetting factor is the US-Iran conflict escalation with the US striki
 near $80.
 
 ### Section - Market Tiles
-The market-performance grid is should display tiles for each ticker listed below in the order provided using the market-tile skill. The tickers are listed below in sections. For each section, include a title and then show the market tiles for that section. Build one tile_img per instrument and lay them out in {{MARKET_TILES}} using the tile_grid component, MAXIMUM three tiles per row.
+The market-performance grid is should display tiles for each ticker listed below in the order provided using the market-tile skill. The tickers are listed below in sections. For each section, include a title and then show the market tiles for that section. Build one tile_img per instrument and lay them out in {{MARKET_TILES}} using the tile_grid component, MAXIMUM three tiles per row. The number in brackets is the number of decimal places to be shown.
 
 Equities:
-  GSPC.INDX S&P500
-  NDX.INDX Nasdaq 100
-  BUK100P.INDX FTSE 100
-  STOXX50E.INDX Euro Stoxx 50
-  AXJO.INDX S&P/ASX200
-  N225.INDX Nikkei 225
-  000001.SHG SSE Composite
+  GSPC.INDX S&P500 (0)
+  STOXX50E.INDX Euro Stoxx 50 (0)
+  BUK100P.INDX FTSE 100 (0)
 
+  N225.INDX Nikkei 225 (0)
+  000001.SHG SSE Composite (0)
+  AXJO.INDX S&P/ASX200 (0)
+
+  NDX.INDX Nasdaq 100 (0)
+  IXIC.INDX.INDX Nasdaq Composite (0)
+
+Themes:
+  SOX.INDX SOX (0)
+  MAGS.US MAG7 (2)
+  QQQ.INDX QQQ (0)
+  
 Volatiity:
-  VIX.INDX VIX
-  SKEW.INDX SKEW
+  VIX.INDX VIX (1)
+  SKEW.INDX SKEW (1)
 
 FX
-  DXY.INDX DXY
-  EURUSD.FOREX EUR
-  USDJPY.FOREX JPY
-  GBPUSD.FOREX GBP
-  AUDUSD.FOREX AUD
+  DXY.INDX DXY (2)
+  EURUSD.FOREX EUR (2)
+  USDJPY.FOREX JPY (2)
+
+  GBPUSD.FOREX GBP (2)
+  AUDUSD.FOREX AUD (2)
 
 Crypto:
-  BTC-USD.CC Bitcoin
-  ETH-USD.CC Ethereum
+  BTC-USD.CC Bitcoin (0)
+  ETH-USD.CC Ethereum (0)
 
 Commodities:
-  CL.COMM WTI Crude
-  BZ.COMM Brent Crude
-  GC.COMM Gold
-  SI.COMM Silver
-  HG.COMM Copper
+  GC.COMM Gold (0)
+  SI.COMM Silver (2)
+  HG.COMM Copper (2)
 
+  CL.COMM WTI Crude (2)
+  BZ.COMM Brent Crude (2)
+  
 
 ### Section - Positive News
 Select the key topics with positive market sentiment and summarise each. For each topic, produce ONE card using the positive_item component: a 30-60 word body in {{BODY}}, a short headline in {{HEADLINE}}, and site-name source links in {{ITEM_SOURCES}} (email-format source_link). Identify EVERY instrument the topic mentions (each company/stock, asset class, commodity, currency, cryptocurrency) and resolve each to an EODHD SYMBOL.EXCHANGE ticker with the market-tile skill (use the relevant index tile for a sector or broad asset class). Build one tile_img per instrument and lay them out in {{ITEM_TILES}} using the tile_grid component, MAXIMUM three tiles per row. If the topic mentions no tradable instrument, leave {{ITEM_TILES}} empty. Concatenate all cards into {{POSITIVE_ITEMS}}.
