@@ -39,8 +39,8 @@ US equities rose on 14 July (S&P 500 +0.4%, Nasdaq Composite +0.9%), helped alon
 The main offsetting factor is the US-Iran conflict escalation with the US striking  about 90 targets overnight, a reinstated shipping "blockade" on the Strait of Hormuz and Hormuz traffic down about 52% week on week. This kept Brent near $85 and WTI 
 near $80.
 
-### Section - Market Tiles
-The market-performance grid is should display tiles for each ticker listed below in the order provided using the market-tile skill. The tickers are listed below in sections. For each section, include a title and then show the market tiles for that section. Build one tile_img per instrument and lay them out in {{MARKET_TILES}} using the tile_grid component, MAXIMUM three tiles per row. If a number is listed in brackets after the ticker and label, this is the number of decimal level to be shown, and this should be used by the market-tile skill to pass to the market-tile API.
+### Section - Market Tiles and Yield Tiles
+The market-performance grid is should display tiles for each ticker listed below in the order provided using the market-tile skill and yield-tile skill (for bonds and interest rates). The tickers are listed below in sections. For each section, include a title and then show the market tiles for that section. Build one tile_img per instrument and lay them out in {{MARKET_AND_YIELD_TILES}} using the tile_grid component, MAXIMUM three tiles per row. If a number is listed in brackets after the ticker and label, this is the number of decimal level to be shown, and this should be used by the market-tile skill to pass to the market-tile API.
 
 Equities:
   GSPC.INDX S&P500 (0)
@@ -57,7 +57,6 @@ Equities:
 Themes:
   SOX.INDX SOX (0)
   MAGS.US MAG7 (2)
-  QQQ.INDX QQQ (0)
   
 Volatiity:
   VIX.INDX VIX (1)
@@ -82,7 +81,13 @@ Commodities:
 
   CL.COMM WTI Crude (2)
   BZ.COMM Brent Crude (2)
-  
+
+Yields:
+  US10Y.GBOND US 10Y (2)
+  UK10Y.GBOND UK 10Y (2)
+  DE10Y.GBOND Germany 10Y (2)
+  JP10Y.GBOND Japan 10Y (2)
+  AU10Y.GBOND Australia 10Y (2)
 
 ### Section - Positive News
 Select the key topics with positive market sentiment and summarise each. For each topic, produce ONE card using the positive_item component: a 30-60 word body in {{BODY}}, a short headline in {{HEADLINE}}, and site-name source links in {{ITEM_SOURCES}} (email-format source_link). Identify EVERY instrument the topic mentions (each company/stock, asset class, commodity, currency, cryptocurrency) and resolve each to an EODHD SYMBOL.EXCHANGE ticker with the market-tile skill (use the relevant index tile for a sector or broad asset class). Build one tile_img per instrument and lay them out in {{ITEM_TILES}} using the tile_grid component, MAXIMUM three tiles per row. If the topic mentions no tradable instrument, leave {{ITEM_TILES}} empty. Concatenate all cards into {{POSITIVE_ITEMS}}.
@@ -133,13 +138,13 @@ Repeat these once per row / item / tile. Substitute only the {{...}} placeholder
 </table>
 ```
 
-## Market tile image
+## Market tile and Yield tile image
 One &lt;img&gt; per instrument tile. Width 168 so three tiles fit across a card row. Build the &lt;img&gt; from the resolved tile URL (leave the URL's size=390 parameter as-is for a sharp image); do NOT paste the skill's default width=390 markup.
 ```html
 <img src="{{TILE_URL}}" width="168" alt="{{LABEL}}" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;">
 ```
 
-## Market tile grid
+## Market tile and Yield tile grid
 Wraps a card's tiles, MAXIMUM three per row. Up to three tile_img blocks, each in its own &lt;td&gt;, inside one &lt;tr&gt;; start a new &lt;tr&gt; after every third. Drop unused &lt;td&gt; cells in the final row. The whole table is the value of {{ITEM_TILES}}.
 ```html
 <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
@@ -165,7 +170,7 @@ Assemble this block and pass it as {{BODY_CONTENT}} to the email-format shell. P
   <!-- MARKET PERFORMANCE (grid is fixed; do not edit) -->
   <tr><td style="padding:24px 28px 4px 28px;">
     <div style="font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;font-size:20px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#d5dce6;padding:0 0 10px 0;border-bottom:2px solid #1e2733;margin:0 0 18px 0;">Market Performance</div>
-    {{MARKET_TILES}}
+    {{MARKET_AND_YIELD_TILES}}
   </td></tr>
 
   <!-- POSITIVE -->
@@ -183,5 +188,5 @@ Assemble this block and pass it as {{BODY_CONTENT}} to the email-format shell. P
 
 ## Execution notes
 - {{DATE}} is today's date, formatted like "9 July 2026" (bash: `date +"%-d %B %Y"`).
-- The 13-tile market grid is embedded above and is fixed. Use the market-tile skill only for the dynamic tiles inside Positive/Negative cards: resolve the instrument to SYMBOL.EXCHANGE, then wrap the resulting tile URL in the tile_img component.
-- The grid tile URLs are hardcoded to the current Worker (market-tile-api.weathered-boat-4f6b.workers.dev). If that endpoint or its auth changes, update the &lt;img&gt; src values in the Market Performance block above.
+- The 13-tile grid is embedded above and is fixed. Use the market-tile skill or yield-tile skill (for bonds and interest rates) only for the dynamic tiles inside Positive/Negative cards: resolve the instrument to SYMBOL.EXCHANGE, decide if a market tile or yield tile is appropriate and then wrap the resulting tile URL in the tile_img component.
+
