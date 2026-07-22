@@ -40,7 +40,7 @@ The main offsetting factor is the US-Iran conflict escalation with the US striki
 near $80.
 
 ### Section - Market Tiles and Yield Tiles
-The market-performance grid is should display tiles for each ticker listed below in the order provided using the market-tile skill and yield-tile skill (for bonds and interest rates). The tickers are listed below in sections. For each section, include a title and then show the market tiles for that section. Build one tile_img per instrument and lay them out in {{MARKET_AND_YIELD_TILES}} using the tile_grid component, MAXIMUM three tiles per row. If a number is listed in brackets after the ticker and label, this is the number of decimal level to be shown, and this should be used by the market-tile skill to pass to the market-tile API.
+The market-performance grid is should display tiles for each ticker listed below in the order provided using the market-tile skill and yield-tile skill (for bonds and interest rates). The tickers are listed below in sections. For each heading below (e.g. Equities, Themes, Volatility etc.), include a title and then show the market tiles for that section. Build one tile_img per instrument and lay them out in {{MARKET_AND_YIELD_TILES}} using the tile_grid component, MAXIMUM three tiles per row. If a number is listed in brackets after the ticker and label, this is the number of decimal level to be shown, and this should be used by the market-tile skill to pass to the market-tile API.
 
 Equities:
   GSPC.INDX S&P500 (0)
@@ -88,6 +88,9 @@ Yields:
   DE10Y.GBOND Germany 10Y (2)
   JP10Y.GBOND Japan 10Y (2)
   AU10Y.GBOND Australia 10Y (2)
+
+### Section - Yield Curves
+The yield curves section contains an image returned from using the yield-curve skill. Build one img using the list of the following country codes: US, UK, DE, JP, AU and put it in {{YIELD_CURVE_IMAGE}}
 
 ### Section - Positive News
 Select the key topics with positive market sentiment and summarise each. For each topic, produce ONE card using the positive_item component: a 30-60 word body in {{BODY}}, a short headline in {{HEADLINE}}, and site-name source links in {{ITEM_SOURCES}} (email-format source_link). Identify EVERY instrument the topic mentions (each company/stock, asset class, commodity, currency, cryptocurrency) and resolve each to an EODHD SYMBOL.EXCHANGE ticker with the market-tile skill (use the relevant index tile for a sector or broad asset class). Build one tile_img per instrument and lay them out in {{ITEM_TILES}} using the tile_grid component, MAXIMUM three tiles per row. If the topic mentions no tradable instrument, leave {{ITEM_TILES}} empty. Concatenate all cards into {{POSITIVE_ITEMS}}.
@@ -167,10 +170,16 @@ Assemble this block and pass it as {{BODY_CONTENT}} to the email-format shell. P
     <div style="font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.5;color:#7c8794;margin-top:10px;">{{SUMMARY_SOURCES}}</div>
   </td></tr>
 
-  <!-- MARKET PERFORMANCE (grid is fixed; do not edit) -->
+  <!-- MARKET PERFORMANCE -->
   <tr><td style="padding:24px 28px 4px 28px;">
     <div style="font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;font-size:20px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#d5dce6;padding:0 0 10px 0;border-bottom:2px solid #1e2733;margin:0 0 18px 0;">Market Performance</div>
     {{MARKET_AND_YIELD_TILES}}
+  </td></tr>
+
+  <!-- YIELD CUrVES -->
+  <tr><td style="padding:24px 28px 4px 28px;">
+    <div style="font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;font-size:20px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#d5dce6;padding:0 0 10px 0;border-bottom:2px solid #1e2733;margin:0 0 18px 0;">Yield Curves</div>
+    {{YIELD_CURVE_IMAGE}}
   </td></tr>
 
   <!-- POSITIVE -->
