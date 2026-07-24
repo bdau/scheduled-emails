@@ -1,0 +1,12 @@
+# Daily Market Update - delivery + shell config
+name: daily-iran-war-news-update
+title: Iran War Update    # used for {{EMAIL_TITLE}} (page title + masthead)
+brand: AI Got Something to Say      # {{BRAND}} 
+subject: Daily AI Ecosystem Update
+
+# Cadence (mirror of the scheduled task; source of truth is the scheduled task itself)
+schedule: "0 7 * * *"               # 05:00 daily
+
+# Content parameters
+lookback_hours: 36
+footer_text: 
